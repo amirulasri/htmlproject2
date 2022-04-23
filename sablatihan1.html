@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        background-color: aquamarine;
+    }
+
+    p {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<body>
+    <form id="myform" name="myform" method="post" action="">
+        <p>PLEASE FILL THE FORM</p>
+        <p>ENTER YOUR NAME :
+            <input type="text" name="username" id="username" />
+        <p>ENTER YOUR MATRIC NUMBER:
+            <input type="text" name="matric" id="matric" />
+        <p>ENTER YOUR FIRST NUMBER:
+            <input type="number" id="number1">
+        </p>
+        <p>ENTER YOUR SECOUND NUMBER:
+            <input type="number" id="number2">
+        </p>
+        <p>ENTER YOUR THIRD NUMBER:
+            <input type="number" id="number3">
+        </p>
+        <p><input type="button" name="button" id="button" value="CLICK ME" onclick="process()" />
+            <input type="reset" name="reset" id="reset" value="CLEAR RESULT" />
+
+            <hr />
+        <p id="date"></p>
+        <p>RESULT NAME:
+            <input type="text" name="resultName" id="resultName" readonly />
+        <p>RESULT MATRIC:
+            <input type="text" name="resultMatric" id="resultMatric" readonly />
+        <p>RESULT SUM:
+            <input type="text" name="sum" id="sum" readonly />
+        <p>RESULT AVERAGE:
+            <input type="text" name="avg" id="avg" readonly />
+        <p>RESULT PRODUCT
+            <input type="text" name="pro" id="pro" readonly />
+        <p>RESULT LARGEST:
+            <input type="text" name="large" id="large" readonly />
+        <p>RESULT SMALLEST:
+            <input type="text" name="small" id="small" readonly />
+
+    </form>
+    <p>OUTPUT RESULT</p>
+    <p id="OutputName"></p>
+    <p id="OutputMatric"></p>
+</body>
+<script>
+    function process() {
+
+        var username = document.getElementById("username").value;
+        var matric = document.getElementById("matric").value;
+        var firstnumber = parseFloat(document.getElementById("number1").value);
+        var secoundnumber = parseFloat(document.getElementById("number2").value);
+        var thirdnumber = parseFloat(document.getElementById("number3").value);
+
+
+
+        if (username == "" || matric == "" || number1 == "" || number2 == "" || number3 == "") {
+            alert("Please fill in all the textfield.");
+        } else {
+
+            if (isNaN(firstnumber) || isNaN(secoundnumber) || isNaN(thirdnumber)) {
+                alert("The value must be a number.");
+            }
+            else {
+                document.getElementById("date").innerHTML = formatDate(new Date());
+                document.getElementById("resultName").value = username;
+                document.getElementById("resultMatric").value = matric;
+
+
+                document.getElementById("OutputName").innerHTML = name;
+
+                document.getElementById("OutputMatric").innerHTML = matric;
+
+                document.getElementById("sum").value = sum(firstnumber, secoundnumber, thirdnumber);
+
+                document.getElementById("avg").value = average(firstnumber, secoundnumber, thirdnumber);
+
+                document.getElementById("pro").value = product(firstnumber, secoundnumber, thirdnumber);
+
+                document.getElementById("large").value = largest(firstnumber, secoundnumber, thirdnumber);
+
+                document.getElementById("small").value = smallest(firstnumber, secoundnumber, thirdnumber);
+            }
+        }
+
+        function sum(firstnumber, secoundnumber, thirdnumber) {
+            sum = firstnumber, secoundnumber, thirdnumber;
+            return sum;
+        }
+        function average(firstnumber, secoundnumber, thirdnumber) {
+            average = (firstnumber + secoundnumber + thirdnumber) / 3;
+            return average;
+        }
+        function product(firstnumber, secoundnumber, thirdnumber) {
+            product = firstnumber * secoundnumber * thirdnumber;
+            return product;
+        }
+        function largest(firstnumber, secoundnumber, thirdnumber) {
+            largest = Math.max(firstnumber, secoundnumber, thirdnumber);
+            return largest;
+        }
+        function smallest(firstnumber, secoundnumber, thirdnumber) {
+            smallest = Math.min(firstnumber, secoundnumber, thirdnumber)
+            return smallest;
+
+        }
+
+        //DATE CONVERSION
+        function padTo2Digits(num) {
+            return num.toString().padStart(2, '0');
+        }
+
+        function formatDate(date) {
+            return [
+                padTo2Digits(date.getDate()),
+                padTo2Digits(date.getMonth() + 1),
+                date.getFullYear(),
+            ].join('/');
+        }
+    }
+
+</script>
+
+</html>
